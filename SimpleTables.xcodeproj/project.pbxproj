@@ -14,6 +14,12 @@
 		C9D57AF5152B0F9300846DB8 /* libSimpleTables.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D57ADD152B0F9300846DB8 /* libSimpleTables.a */; };
 		C9D57AFB152B0F9300846DB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9D57AF9152B0F9300846DB8 /* InfoPlist.strings */; };
 		C9D57AFE152B0F9300846DB8 /* SimpleTablesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D57AFD152B0F9300846DB8 /* SimpleTablesTests.m */; };
+		C9DE8B78152B1A0300101FB5 /* SimpleTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C9DE8B76152B1A0300101FB5 /* SimpleTableViewController.h */; };
+		C9DE8B79152B1A0300101FB5 /* SimpleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DE8B77152B1A0300101FB5 /* SimpleTableViewController.m */; };
+		C9DE8B7D152B1AD000101FB5 /* SimpleTableSection.h in Headers */ = {isa = PBXBuildFile; fileRef = C9DE8B7B152B1ACF00101FB5 /* SimpleTableSection.h */; };
+		C9DE8B7E152B1AD000101FB5 /* SimpleTableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DE8B7C152B1ACF00101FB5 /* SimpleTableSection.m */; };
+		C9DE8B81152B1C2600101FB5 /* SimpleTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = C9DE8B7F152B1C2600101FB5 /* SimpleTableCell.h */; };
+		C9DE8B82152B1C2600101FB5 /* SimpleTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DE8B80152B1C2600101FB5 /* SimpleTableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +43,12 @@
 		C9D57AFA152B0F9300846DB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9D57AFC152B0F9300846DB8 /* SimpleTablesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTablesTests.h; sourceTree = "<group>"; };
 		C9D57AFD152B0F9300846DB8 /* SimpleTablesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTablesTests.m; sourceTree = "<group>"; };
+		C9DE8B76152B1A0300101FB5 /* SimpleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableViewController.h; sourceTree = "<group>"; };
+		C9DE8B77152B1A0300101FB5 /* SimpleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTableViewController.m; sourceTree = "<group>"; };
+		C9DE8B7B152B1ACF00101FB5 /* SimpleTableSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableSection.h; sourceTree = "<group>"; };
+		C9DE8B7C152B1ACF00101FB5 /* SimpleTableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTableSection.m; sourceTree = "<group>"; };
+		C9DE8B7F152B1C2600101FB5 /* SimpleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableCell.h; sourceTree = "<group>"; };
+		C9DE8B80152B1C2600101FB5 /* SimpleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +107,12 @@
 			isa = PBXGroup;
 			children = (
 				C9D57AE3152B0F9300846DB8 /* Supporting Files */,
+				C9DE8B76152B1A0300101FB5 /* SimpleTableViewController.h */,
+				C9DE8B77152B1A0300101FB5 /* SimpleTableViewController.m */,
+				C9DE8B7B152B1ACF00101FB5 /* SimpleTableSection.h */,
+				C9DE8B7C152B1ACF00101FB5 /* SimpleTableSection.m */,
+				C9DE8B7F152B1C2600101FB5 /* SimpleTableCell.h */,
+				C9DE8B80152B1C2600101FB5 /* SimpleTableCell.m */,
 			);
 			path = SimpleTables;
 			sourceTree = "<group>";
@@ -133,6 +151,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9DE8B78152B1A0300101FB5 /* SimpleTableViewController.h in Headers */,
+				C9DE8B7D152B1AD000101FB5 /* SimpleTableSection.h in Headers */,
+				C9DE8B81152B1C2600101FB5 /* SimpleTableCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +203,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Sound Evolution Pty Ltd";
 			};
 			buildConfigurationList = C9D57AD7152B0F9300846DB8 /* Build configuration list for PBXProject "SimpleTables" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -233,6 +255,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9DE8B79152B1A0300101FB5 /* SimpleTableViewController.m in Sources */,
+				C9DE8B7E152B1AD000101FB5 /* SimpleTableSection.m in Sources */,
+				C9DE8B82152B1C2600101FB5 /* SimpleTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
