@@ -15,6 +15,7 @@
 @synthesize configureBlock = _configureBlock;
 @synthesize selectedBlock = _selectedBlock;
 @synthesize indexPath = _indexPath;
+@synthesize cellIdentifier = _cellIdentifier;
 
 
 - (NSString*) cellIdentifier

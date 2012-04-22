@@ -31,8 +31,8 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
 // cell style
 @property (nonatomic, assign) UITableViewCellStyle style;
 
-// get the cell identifier for this class. Defaults to the class name
-@property (nonatomic, readonly) NSString* cellIdentifier;
+// the cell identifier for this class. Defaults to the class name if nil
+@property (nonatomic, strong) NSString* cellIdentifier;
 
 // set by the SimpleTable controller before calling any of the blocks or methods below
 @property (nonatomic, strong) NSIndexPath* indexPath;
