@@ -8,14 +8,30 @@
 
 #import "SimpleTableCell.h"
 
+static const CGFloat DEFAULT_CELL_HEIGHT = 35.0f;
+
 @implementation SimpleTableCell
 
+@synthesize cellClass = _cellClass;
+@synthesize cellIdentifier = _cellIdentifier;
 @synthesize style = _style;
+@synthesize indexPath = _indexPath;
 @synthesize createBlock = _createBlock;
 @synthesize configureBlock = _configureBlock;
 @synthesize selectedBlock = _selectedBlock;
-@synthesize indexPath = _indexPath;
-@synthesize cellIdentifier = _cellIdentifier;
+@synthesize canEditRow = _canEditRow;
+@synthesize cellHeight = _cellHeight;
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _canEditRow = NO;
+        _cellHeight = DEFAULT_CELL_HEIGHT;
+    }
+    return self;
+}
+
 
 
 - (NSString*) cellIdentifier
@@ -24,6 +40,11 @@
     if (!identifier) identifier = NSStringFromClass([self class]);
     
     return [NSString stringWithFormat:@"%@-%d", identifier, _style];
+}
+
+- (Class) cellClass
+{
+    return _cellClass ? _cellClass : [UITableViewCell class];
 }
 
 // create a cell - occurs when one cannot be dequed
@@ -35,8 +56,8 @@
     if (_createBlock) {
         result = _createBlock(self);
     } else {
-        result = [[UITableViewCell alloc] initWithStyle:self.style
-                                        reuseIdentifier:self.cellIdentifier];
+        result = [[self.cellClass alloc] initWithStyle:self.style
+                                       reuseIdentifier:self.cellIdentifier];
     }
     return result;
 }
@@ -59,5 +80,6 @@
         _selectedBlock(self);
     }
 }
+
 
 @end

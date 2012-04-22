@@ -17,15 +17,26 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
 
 @interface SimpleTableCell : NSObject
 {
+    Class _cellClass; // if nil, defaults to UITableViewCell
     NSString* _cellIdentifier; // if nil, the class name will be used. The style will always be appended so
                                // that only cells of the same style will be recycled.
+                               
+    // will always be set before calling the class or its blocks
+    NSIndexPath* _indexPath;
+    BOOL _canEditRow;
+    CGFloat _cellHeight;
+    
+    // configuration
     UITableViewCellStyle _style;
     
+    // blocks for configuration and responding to actions
     SimpleCellCreateBlock _createBlock;
     SimpleCellConfigureBlock _configureBlock;
     SimpleCellSelectedCellBlock _selectedBlock;
     
-    NSIndexPath* _indexPath;
+    
+    
+    
 }
 
 // cell style
@@ -33,6 +44,9 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
 
 // the cell identifier for this class. Defaults to the class name if nil
 @property (nonatomic, strong) NSString* cellIdentifier;
+
+// the class to be used for the cell, if nil, defaults to UITableViewCell
+@property (nonatomic, assign) Class cellClass;
 
 // set by the SimpleTable controller before calling any of the blocks or methods below
 @property (nonatomic, strong) NSIndexPath* indexPath;
@@ -45,6 +59,13 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
 
 // block for responding to selections
 @property (nonatomic, copy) SimpleCellSelectedCellBlock selectedBlock;
+
+// true if the row can be edited
+@property (nonatomic, assign) BOOL canEditRow;
+
+// override the cell height if required.
+@property (nonatomic, assign) CGFloat cellHeight;
+
 
 
 // create a cell - occurs when one cannot be dequed
