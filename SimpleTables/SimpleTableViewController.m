@@ -12,7 +12,7 @@
 
 
 @interface SimpleTableViewController ()
-
+- (SimpleTableCell*)cellAtIndexPath:(NSIndexPath*)indexPath;
 @end
 
 @implementation SimpleTableViewController
@@ -51,6 +51,18 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+- (SimpleTableCell*)cellAtIndexPath:(NSIndexPath*)indexPath
+{
+    SimpleTableSection* section = [self.sections objectAtIndex:indexPath.section];
+    SimpleTableCell* simpleCell = [section cellAtIndex:indexPath.row];
+    
+    // always setup the cell for this indexPath in case it has moved or is used for multiple
+    // rows.
+    simpleCell.indexPath = indexPath;
+    return simpleCell;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -66,12 +78,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:indexPath.section];
-    SimpleTableCell* simpleCell = [section cellAtIndex:indexPath.row];
-    
-    // update the index path, this may have changed if cells were inserted / deleted, or if the
-    // same simpleCell instance is used to represent multiple cells in the table.
-    simpleCell.indexPath = indexPath;
+    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
     
     NSString *cellIdentifier = simpleCell.cellIdentifier;
     
@@ -95,14 +102,20 @@
     return section.title;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    return [simpleCell canEditRow];
 }
-*/
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    return [simpleCell cellHeight];
+}
 
 /*
 // Override to support editing the table view.
@@ -138,9 +151,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:indexPath.section];
-    SimpleTableCell* simpleCell = [section cellAtIndex:indexPath.row];
-    simpleCell.indexPath = indexPath;
+    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
     [simpleCell selectCell];
 }
 
