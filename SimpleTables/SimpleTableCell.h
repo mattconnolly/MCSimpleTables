@@ -13,7 +13,7 @@
 
 typedef UITableViewCell* (^SimpleCellCreateBlock)(SimpleTableCell* simpleCell);
 typedef void(^SimpleCellConfigureBlock)(SimpleTableCell* simpleCell, UITableViewCell* tableCell);
-typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* cell, NSIndexPath* indexPath);
+typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
 
 @interface SimpleTableCell : NSObject
 {
@@ -24,6 +24,8 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* cell, NSIndexPath* i
     SimpleCellCreateBlock _createBlock;
     SimpleCellConfigureBlock _configureBlock;
     SimpleCellSelectedCellBlock _selectedBlock;
+    
+    NSIndexPath* _indexPath;
 }
 
 // cell style
@@ -32,6 +34,8 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* cell, NSIndexPath* i
 // get the cell identifier for this class. Defaults to the class name
 @property (nonatomic, readonly) NSString* cellIdentifier;
 
+// set by the SimpleTable controller before calling any of the blocks or methods below
+@property (nonatomic, strong) NSIndexPath* indexPath;
 
 // block for creating the cell
 @property (nonatomic, copy) SimpleCellCreateBlock createBlock;
@@ -52,7 +56,7 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* cell, NSIndexPath* i
 - (void) configureCell:(UITableViewCell*)cell;
 
 // select cell - respond to didSelectRow method
-// base implementation: no action
-- (void) selectCell:(NSIndexPath*)indexPath;
+// base implementation: calls the selected block if provided, or no action
+- (void) selectCell;
 
 @end

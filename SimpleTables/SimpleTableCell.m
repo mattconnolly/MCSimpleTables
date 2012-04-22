@@ -14,6 +14,7 @@
 @synthesize createBlock = _createBlock;
 @synthesize configureBlock = _configureBlock;
 @synthesize selectedBlock = _selectedBlock;
+@synthesize indexPath = _indexPath;
 
 
 - (NSString*) cellIdentifier
@@ -51,10 +52,10 @@
 
 // select cell - respond to didSelectRow method
 // base implementation: no action
-- (void) selectCell:(NSIndexPath*)indexPath
+- (void) selectCell
 {
     if (_selectedBlock) {
-        _selectedBlock(self, indexPath);
+        _selectedBlock(self);
     }
 }
 

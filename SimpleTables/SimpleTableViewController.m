@@ -68,6 +68,11 @@
 {
     SimpleTableSection* section = [self.sections objectAtIndex:indexPath.section];
     SimpleTableCell* simpleCell = [section cellAtIndex:indexPath.row];
+    
+    // update the index path, this may have changed if cells were inserted / deleted, or if the
+    // same simpleCell instance is used to represent multiple cells in the table.
+    simpleCell.indexPath = indexPath;
+    
     NSString *cellIdentifier = simpleCell.cellIdentifier;
     
     // find a reusable cell
@@ -135,7 +140,8 @@
 {
     SimpleTableSection* section = [self.sections objectAtIndex:indexPath.section];
     SimpleTableCell* simpleCell = [section cellAtIndex:indexPath.row];
-    [simpleCell selectCell:indexPath];
+    simpleCell.indexPath = indexPath;
+    [simpleCell selectCell];
 }
 
 
