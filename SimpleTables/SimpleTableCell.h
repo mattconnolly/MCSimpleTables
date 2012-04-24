@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class SimpleTableCell;
+@class SimpleTableViewController;
 
 
 typedef UITableViewCell* (^SimpleCellCreateBlock)(SimpleTableCell* simpleCell);
@@ -34,10 +35,13 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
     SimpleCellConfigureBlock _configureBlock;
     SimpleCellSelectedCellBlock _selectedBlock;
     
-    
-    
-    
+    // weak reference to the view controller containing this cell
+    __weak SimpleTableViewController* _viewController;
 }
+
+//
+//=== Properties ===
+//
 
 // cell style
 @property (nonatomic, assign) UITableViewCellStyle style;
@@ -66,17 +70,27 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
 // override the cell height if required.
 @property (nonatomic, assign) CGFloat cellHeight;
 
+// the SimpleTableViewController where this section is inserted
+@property (nonatomic, weak) SimpleTableViewController* viewController;
 
+// get the actual cell. This may return nil if the cell is not visible
+// If this SimpleTableCell instance controls multiple cells, then its value will only
+// be reliable after the indexPath property has been set
+@property (nonatomic, readonly) UITableViewCell* tableCell;
 
-// create a cell - occurs when one cannot be dequed
+//
+//=== Methods ===
+//
+
+// callback: create a cell - occurs when one cannot be dequed
 // base implementation: calls the block if provided, or create a blank cell
 - (UITableViewCell*) createCell;
 
-// called after create OR dequeue.
+// callback: called after create OR dequeue.
 // base implementation: calls the block if provided, or no action
 - (void) configureCell:(UITableViewCell*)cell;
 
-// select cell - respond to didSelectRow method
+// callback: select cell - respond to didSelectRow method
 // base implementation: calls the selected block if provided, or no action
 - (void) selectCell;
 

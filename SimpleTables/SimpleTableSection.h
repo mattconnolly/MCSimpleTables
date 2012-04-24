@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class SimpleTableCell;
-
+@class SimpleTableViewController;
 
 @interface SimpleTableSection : NSObject
 {
     NSMutableArray* _cells;
     NSString* _title;
-    
+    __weak SimpleTableViewController* _viewController;
 }
 
 // array of SimpleTableCell objects
@@ -23,6 +23,12 @@
 
 // title to show in table view
 @property (nonatomic, retain) NSString* title;
+
+// the SimpleTableViewController where this section is inserted
+@property (nonatomic, weak) SimpleTableViewController* viewController;
+
+// accessor for the tableView.
+@property (nonatomic, readonly) UITableView* tableView;
 
 - (NSUInteger) cellCount;
 - (SimpleTableCell*) cellAtIndex:(NSUInteger)index;

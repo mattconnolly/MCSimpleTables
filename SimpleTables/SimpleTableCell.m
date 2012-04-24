@@ -7,6 +7,7 @@
 //
 
 #import "SimpleTableCell.h"
+#import "SimpleTableViewController.h"
 
 static const CGFloat DEFAULT_CELL_HEIGHT = 35.0f;
 
@@ -21,6 +22,7 @@ static const CGFloat DEFAULT_CELL_HEIGHT = 35.0f;
 @synthesize selectedBlock = _selectedBlock;
 @synthesize canEditRow = _canEditRow;
 @synthesize cellHeight = _cellHeight;
+@synthesize viewController = _viewController;
 
 - (id)init
 {
@@ -45,6 +47,11 @@ static const CGFloat DEFAULT_CELL_HEIGHT = 35.0f;
 - (Class) cellClass
 {
     return _cellClass ? _cellClass : [UITableViewCell class];
+}
+
+- (UITableViewCell*) tableCell
+{
+    return [self.viewController.tableView cellForRowAtIndexPath:self.indexPath];
 }
 
 // create a cell - occurs when one cannot be dequed

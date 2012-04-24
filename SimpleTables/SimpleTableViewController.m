@@ -170,6 +170,7 @@
 - (void) addSection:(SimpleTableSection*)section
 {
     [self.sections addObject:section];
+    section.viewController = self;
 }
 
 @end

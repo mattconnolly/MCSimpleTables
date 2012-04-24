@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C988FA8B154748DC002C8665 /* SimpleTableTextEditCell.h in Headers */ = {isa = PBXBuildFile; fileRef = C988FA89154748DC002C8665 /* SimpleTableTextEditCell.h */; };
+		C988FA8C154748DC002C8665 /* SimpleTableTextEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C988FA8A154748DC002C8665 /* SimpleTableTextEditCell.m */; };
 		C9D57AE1152B0F9300846DB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D57AE0152B0F9300846DB8 /* Foundation.framework */; };
 		C9D57AEF152B0F9300846DB8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D57AEE152B0F9300846DB8 /* SenTestingKit.framework */; };
 		C9D57AF1152B0F9300846DB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D57AF0152B0F9300846DB8 /* UIKit.framework */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C988FA89154748DC002C8665 /* SimpleTableTextEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableTextEditCell.h; sourceTree = "<group>"; };
+		C988FA8A154748DC002C8665 /* SimpleTableTextEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTableTextEditCell.m; sourceTree = "<group>"; };
 		C9D57ADD152B0F9300846DB8 /* libSimpleTables.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSimpleTables.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D57AE0152B0F9300846DB8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9D57AE4152B0F9300846DB8 /* SimpleTables-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleTables-Prefix.pch"; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				C9DE8B7C152B1ACF00101FB5 /* SimpleTableSection.m */,
 				C9DE8B7F152B1C2600101FB5 /* SimpleTableCell.h */,
 				C9DE8B80152B1C2600101FB5 /* SimpleTableCell.m */,
+				C988FA89154748DC002C8665 /* SimpleTableTextEditCell.h */,
+				C988FA8A154748DC002C8665 /* SimpleTableTextEditCell.m */,
 			);
 			path = SimpleTables;
 			sourceTree = "<group>";
@@ -154,6 +160,7 @@
 				C9DE8B78152B1A0300101FB5 /* SimpleTableViewController.h in Headers */,
 				C9DE8B7D152B1AD000101FB5 /* SimpleTableSection.h in Headers */,
 				C9DE8B81152B1C2600101FB5 /* SimpleTableCell.h in Headers */,
+				C988FA8B154748DC002C8665 /* SimpleTableTextEditCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +265,7 @@
 				C9DE8B79152B1A0300101FB5 /* SimpleTableViewController.m in Sources */,
 				C9DE8B7E152B1AD000101FB5 /* SimpleTableSection.m in Sources */,
 				C9DE8B82152B1C2600101FB5 /* SimpleTableCell.m in Sources */,
+				C988FA8C154748DC002C8665 /* SimpleTableTextEditCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

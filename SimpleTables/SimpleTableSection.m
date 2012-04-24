@@ -7,13 +7,15 @@
 //
 
 #import "SimpleTableSection.h"
+#import "SimpleTableViewController.h"
+#import "SimpleTableCell.h"
 
 @implementation SimpleTableSection
 
 
 @synthesize cells = _cells;
 @synthesize title = _title;
-
+@synthesize viewController = _viewController;
 
 - (id)init
 {
@@ -40,6 +42,22 @@
 - (void) addCell:(SimpleTableCell*)cell
 {
     [self.cells addObject:cell];
+    cell.viewController = self.viewController;
+}
+
+
+- (void) setViewController:(SimpleTableViewController *)viewController
+{
+    _viewController = viewController;
+    
+    for (SimpleTableCell* cell in _cells) {
+        cell.viewController = viewController;
+    }
+}
+
+- (UITableView*) tableView
+{
+    return self.viewController.tableView;
 }
 
 @end
