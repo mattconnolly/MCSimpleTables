@@ -17,13 +17,32 @@
 
 @implementation SimpleTableViewController
 
-
+@synthesize usesCustomFooterViews = _usesCustomFooterViews;
+@synthesize usesCustomHeaderViews = _usesCustomHeaderViews;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+    }
+    return self;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.usesCustomFooterViews = YES;
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.usesCustomFooterViews = YES;
     }
     return self;
 }
@@ -100,6 +119,59 @@
 {
     SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
     return section.title;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)sectionIndex
+{
+    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    return [section footerView];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)sectionIndex
+{
+    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    CGFloat height = [section footerHeight];
+    NSLog(@"Section %d footer height = %f", sectionIndex, height);
+    return height;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
+{
+    CGFloat height = [self tableView:tableView
+            heightForHeaderInSection:sectionIndex];
+    NSLog(@"height: %f", height);
+    
+    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    return [section headerView];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
+{
+    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    CGFloat height = [section headerHeight];
+    NSLog(@"Section %d header height = %f", sectionIndex, height);
+    return height;
+}
+
+- (BOOL) respondsToSelector:(SEL)aSelector
+{
+    if (aSelector == @selector(tableView:heightForHeaderInSection:))
+    {
+        // if we don't use custom header views, pretend that we don't respond
+        // to this method. UIKit will then not call it and provide its own
+        // height calculations.
+        return self.usesCustomHeaderViews;
+    }
+    
+    if (aSelector == @selector(tableView:heightForFooterInSection:))
+    {
+        // if we don't use custom footer views, pretend that we don't respond
+        // to this method. UIKit will then use its own geometry.
+        return self.usesCustomFooterViews;
+    }
+
+    return [super respondsToSelector:aSelector];
 }
 
 

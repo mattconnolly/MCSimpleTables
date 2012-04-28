@@ -13,6 +13,8 @@
 @interface SimpleTableViewController : UITableViewController
 {
     NSMutableArray* _sections;
+    BOOL _usesCustomHeaderViews;
+    BOOL _usesCustomFooterViews;
 }
 
 // array of SimpleTableSection objects
@@ -20,5 +22,9 @@
 
 // convenience to add a section to the array of sections
 - (void) addSection:(SimpleTableSection*)section;
+
+// YES if we provide customer header / footer views in sections
+@property (nonatomic, assign) BOOL usesCustomHeaderViews;
+@property (nonatomic, assign) BOOL usesCustomFooterViews;
 
 @end
