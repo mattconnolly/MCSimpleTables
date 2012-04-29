@@ -131,17 +131,12 @@
 {
     SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
     CGFloat height = [section footerHeight];
-    NSLog(@"Section %d footer height = %f", sectionIndex, height);
     return height;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
 {
-    CGFloat height = [self tableView:tableView
-            heightForHeaderInSection:sectionIndex];
-    NSLog(@"height: %f", height);
-    
     SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
     return [section headerView];
 }
@@ -150,7 +145,6 @@
 {
     SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
     CGFloat height = [section headerHeight];
-    NSLog(@"Section %d header height = %f", sectionIndex, height);
     return height;
 }
 
