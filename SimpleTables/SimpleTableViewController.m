@@ -78,7 +78,7 @@
     
     // always setup the cell for this indexPath in case it has moved or is used for multiple
     // rows.
-    simpleCell.indexPath = indexPath;
+    simpleCell.indexPath = [indexPath copy];
     return simpleCell;
 }
 
