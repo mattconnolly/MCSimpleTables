@@ -19,10 +19,8 @@ const static CGFloat VIEW_HEIGHT_PADDING = 8.0f;
 @synthesize viewController = _viewController;
 @synthesize footerView = _footerView;
 @synthesize footerViewBlock = _footerViewBlock;
-@synthesize footerHeight = _footerHeight;
 @synthesize headerView = _headerView;
 @synthesize headerViewBlock = _headerViewBlock;
-@synthesize headerHeight = _headerHeight;
 
 - (id)init
 {
@@ -76,12 +74,18 @@ const static CGFloat VIEW_HEIGHT_PADDING = 8.0f;
     return _footerView;
 }
 
-- (CGFloat) footerHeight
+- (CGFloat) footerHeightInTable:(UITableView*)tableView;
 {
     if (_footerHeight) return _footerHeight;
     UIView* view = self.footerView;
-    if (view) return view.bounds.size.height + VIEW_HEIGHT_PADDING;
-    return 0.0f;
+    if (view)
+    {
+        CGSize size = CGSizeMake(tableView.bounds.size.width, CGFLOAT_MAX);
+        CGSize fits = [view sizeThatFits:size];
+        if (fits.height != CGFLOAT_MAX) _footerHeight = fits.height;
+        _footerHeight += VIEW_HEIGHT_PADDING;
+    }
+    return _footerHeight;
 }
 
 - (UIView*) headerView
@@ -93,12 +97,18 @@ const static CGFloat VIEW_HEIGHT_PADDING = 8.0f;
     return _headerView;
 }
 
-- (CGFloat) headerHeight
+- (CGFloat) headerHeightInTable:(UITableView*)tableView
 {
     if (_headerHeight) return _headerHeight;
     UIView* view = self.headerView;
-    if (view) return view.bounds.size.height + VIEW_HEIGHT_PADDING;
-    return 0.0f;
+    if (view)
+    {
+        CGSize size = CGSizeMake(tableView.bounds.size.width, CGFLOAT_MAX);
+        CGSize fits = [view sizeThatFits:size];
+        if (fits.height != CGFLOAT_MAX) _headerHeight = fits.height;
+        _headerHeight += VIEW_HEIGHT_PADDING;
+    }
+    return _headerHeight;
 }
 
 

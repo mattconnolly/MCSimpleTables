@@ -43,8 +43,8 @@ typedef UIView*(^SimpleTableSectionViewBlock)(SimpleTableSection* section);
 // height for the header / footer. If not defined, and a view is defined,
 // the returned value of the property will be the height of the view plus
 // some padding.
-@property (nonatomic, assign) CGFloat headerHeight;
-@property (nonatomic, assign) CGFloat footerHeight;
+- (CGFloat) headerHeightInTable:(UITableView*)tableView;
+- (CGFloat) footerHeightInTable:(UITableView*)tableView;
 
 // the SimpleTableViewController where this section is inserted
 @property (nonatomic, weak) SimpleTableViewController* viewController;
