@@ -78,7 +78,7 @@
     
     // always setup the cell for this indexPath in case it has moved or is used for multiple
     // rows.
-    simpleCell.indexPath = indexPath;
+    simpleCell.indexPath = [indexPath copy];
     return simpleCell;
 }
 
@@ -130,17 +130,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)sectionIndex
 {
     SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
-    CGFloat height = [section footerHeightInTable:tableView];
+    CGFloat height = [section footerHeight];
     return height;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
 {
-    CGFloat height = [self tableView:tableView
-            heightForHeaderInSection:sectionIndex];
-    NSLog(@"height: %f", height);
-    
     SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
     return [section headerView];
 }
@@ -148,7 +144,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
 {
     SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
-    CGFloat height = [section headerHeightInTable:tableView];
+    CGFloat height = [section headerHeight];
     return height;
 }
 
