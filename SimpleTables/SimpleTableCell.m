@@ -9,7 +9,7 @@
 #import "SimpleTableCell.h"
 #import "SimpleTableViewController.h"
 
-static const CGFloat DEFAULT_CELL_HEIGHT = 35.0f;
+static const CGFloat DEFAULT_CELL_HEIGHT = 41.0f;
 
 @implementation SimpleTableCell
 
