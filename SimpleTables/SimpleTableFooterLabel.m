@@ -58,8 +58,7 @@ static const CGFloat DEFAULT_MARGIN = 23.0f;
     [super layoutSubviews];
     
     CGRect bounds = self.bounds;
-    CGRect frame = _label.frame;
-    frame = bounds;
+    CGRect frame = bounds;
     
     frame.origin.x = bounds.origin.x + self.margin;
     frame.size.width = bounds.size.width - self.margin * 2.0f;
