@@ -13,16 +13,6 @@ static const CGFloat DEFAULT_CELL_HEIGHT = 41.0f;
 
 @implementation SimpleTableCell
 
-@synthesize cellClass = _cellClass;
-@synthesize cellIdentifier = _cellIdentifier;
-@synthesize style = _style;
-@synthesize indexPath = _indexPath;
-@synthesize createBlock = _createBlock;
-@synthesize configureBlock = _configureBlock;
-@synthesize selectedBlock = _selectedBlock;
-@synthesize canEditRow = _canEditRow;
-@synthesize cellHeight = _cellHeight;
-@synthesize viewController = _viewController;
 
 - (id)init
 {
@@ -33,7 +23,6 @@ static const CGFloat DEFAULT_CELL_HEIGHT = 41.0f;
     }
     return self;
 }
-
 
 
 - (NSString*) cellIdentifier

@@ -14,14 +14,6 @@
 
 const static CGFloat VIEW_HEIGHT_PADDING = 8.0f;
 
-@synthesize cells = _cells;
-@synthesize title = _title;
-@synthesize viewController = _viewController;
-@synthesize footerView = _footerView;
-@synthesize footerViewBlock = _footerViewBlock;
-@synthesize headerView = _headerView;
-@synthesize headerViewBlock = _headerViewBlock;
-
 - (id)init
 {
     self = [super init];

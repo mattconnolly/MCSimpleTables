@@ -11,14 +11,8 @@
 #import "SimpleTableCell.h"
 
 
-@interface SimpleTableViewController ()
-- (SimpleTableCell*)cellAtIndexPath:(NSIndexPath*)indexPath;
-@end
-
 @implementation SimpleTableViewController
 
-@synthesize usesCustomFooterViews = _usesCustomFooterViews;
-@synthesize usesCustomHeaderViews = _usesCustomHeaderViews;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

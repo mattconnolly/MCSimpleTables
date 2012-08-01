@@ -17,9 +17,7 @@ static int TEXTFIELD_TAG = 999;
 
 
 @implementation SimpleTableTextEditCell
-@synthesize textFieldHeight = _textFieldHeight;
-@synthesize didEndEditingBlock;
-@synthesize didBeginEditingBlock;
+
 
 - (id)init
 {

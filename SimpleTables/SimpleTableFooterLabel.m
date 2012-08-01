@@ -16,8 +16,6 @@ static const CGFloat DEFAULT_MARGIN = 23.0f;
 
 @implementation SimpleTableFooterLabel
 
-@synthesize label = _label;
-@synthesize margin = _margin;
 
 - (id)init
 {
