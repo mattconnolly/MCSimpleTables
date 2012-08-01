@@ -40,7 +40,7 @@ const static CGFloat VIEW_HEIGHT_PADDING = 8.0f;
 
 - (SimpleTableCell*) cellAtIndex:(NSUInteger)index
 {
-    return [self.cells objectAtIndex:index];
+    return (self.cells)[index];
 }
 
 // convenience to add a cell to the cells array

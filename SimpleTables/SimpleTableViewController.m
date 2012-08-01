@@ -73,7 +73,7 @@
 
 - (SimpleTableCell*)cellAtIndexPath:(NSIndexPath*)indexPath
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:indexPath.section];
+    SimpleTableSection* section = (self.sections)[indexPath.section];
     SimpleTableCell* simpleCell = [section cellAtIndex:indexPath.row];
     
     // always setup the cell for this indexPath in case it has moved or is used for multiple
@@ -91,7 +91,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
     return [section cellCount];
 }
 
@@ -117,19 +117,19 @@
 
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
     return section.title;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
     return [section footerView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
     CGFloat height = [section footerHeightInTable:tableView];
     return height;
 }
@@ -137,13 +137,13 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
     return [section headerView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
     CGFloat height = [section headerHeightInTable:tableView];
     return height;
 }
