@@ -92,6 +92,6 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
 
 // callback: select cell - respond to didSelectRow method
 // base implementation: calls the selected block if provided, or no action
-- (void) selectCell;
+- (void) didSelectCell;
 
 @end

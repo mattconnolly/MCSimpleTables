@@ -212,7 +212,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
-    [simpleCell selectCell];
+    [simpleCell didSelectCell];
 }
 
 

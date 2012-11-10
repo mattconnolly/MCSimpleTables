@@ -70,7 +70,7 @@ static const CGFloat DEFAULT_CELL_HEIGHT = 41.0f;
 
 // select cell - respond to didSelectRow method
 // base implementation: no action
-- (void) selectCell
+- (void) didSelectCell
 {
     if (_selectedBlock) {
         _selectedBlock(self);
