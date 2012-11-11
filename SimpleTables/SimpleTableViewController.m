@@ -177,6 +177,27 @@
     return [simpleCell cellHeight];
 }
 
+// Copy/Paste.  All three methods must be implemented by the delegate.
+
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    return simpleCell.shouldShowMenu;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    return [simpleCell respondsToSelector:action];
+}
+
+- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    [simpleCell performSelector:action withObject:sender];
+}
+
+
 /*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

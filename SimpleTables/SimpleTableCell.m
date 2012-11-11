@@ -20,6 +20,7 @@ static const CGFloat DEFAULT_CELL_HEIGHT = 41.0f;
     if (self) {
         _canEditRow = NO;
         _cellHeight = DEFAULT_CELL_HEIGHT;
+        _shouldShowMenu = NO;
     }
     return self;
 }
@@ -76,6 +77,5 @@ static const CGFloat DEFAULT_CELL_HEIGHT = 41.0f;
         _selectedBlock(self);
     }
 }
-
 
 @end
