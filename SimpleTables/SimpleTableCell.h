@@ -78,6 +78,11 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
 // be reliable after the indexPath property has been set
 @property (nonatomic, readonly) UITableViewCell* tableCell;
 
+// should the cell show any edit menu (cut,copy,paste,etc)
+// functions need to be implemented as methods on the subclass of
+// the SimpleCell instance for that cell.
+@property (nonatomic, assign) BOOL shouldShowMenu;
+
 //
 //=== Methods ===
 //
@@ -92,6 +97,7 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
 
 // callback: select cell - respond to didSelectRow method
 // base implementation: calls the selected block if provided, or no action
-- (void) selectCell;
+- (void) didSelectCell;
+
 
 @end

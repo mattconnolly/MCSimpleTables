@@ -11,14 +11,8 @@
 #import "SimpleTableCell.h"
 
 
-@interface SimpleTableViewController ()
-- (SimpleTableCell*)cellAtIndexPath:(NSIndexPath*)indexPath;
-@end
-
 @implementation SimpleTableViewController
 
-@synthesize usesCustomFooterViews = _usesCustomFooterViews;
-@synthesize usesCustomHeaderViews = _usesCustomHeaderViews;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -73,7 +67,7 @@
 
 - (SimpleTableCell*)cellAtIndexPath:(NSIndexPath*)indexPath
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:indexPath.section];
+    SimpleTableSection* section = (self.sections)[indexPath.section];
     SimpleTableCell* simpleCell = [section cellAtIndex:indexPath.row];
     
     // always setup the cell for this indexPath in case it has moved or is used for multiple
@@ -91,7 +85,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
     return [section cellCount];
 }
 
@@ -117,34 +111,34 @@
 
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
     return section.title;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
     return [section footerView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
-    CGFloat height = [section footerHeight];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
+    CGFloat height = [section footerHeightInTable:tableView];
     return height;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
     return [section headerView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = [self.sections objectAtIndex:sectionIndex];
-    CGFloat height = [section headerHeight];
+    SimpleTableSection* section = (self.sections)[sectionIndex];
+    CGFloat height = [section headerHeightInTable:tableView];
     return height;
 }
 
@@ -183,6 +177,27 @@
     return [simpleCell cellHeight];
 }
 
+// Copy/Paste.  All three methods must be implemented by the delegate.
+
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    return simpleCell.shouldShowMenu;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    return [simpleCell respondsToSelector:action];
+}
+
+- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    [simpleCell performSelector:action withObject:sender];
+}
+
+
 /*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -218,7 +233,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
-    [simpleCell selectCell];
+    [simpleCell didSelectCell];
 }
 
 

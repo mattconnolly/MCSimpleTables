@@ -9,20 +9,10 @@
 #import "SimpleTableCell.h"
 #import "SimpleTableViewController.h"
 
-static const CGFloat DEFAULT_CELL_HEIGHT = 35.0f;
+static const CGFloat DEFAULT_CELL_HEIGHT = 41.0f;
 
 @implementation SimpleTableCell
 
-@synthesize cellClass = _cellClass;
-@synthesize cellIdentifier = _cellIdentifier;
-@synthesize style = _style;
-@synthesize indexPath = _indexPath;
-@synthesize createBlock = _createBlock;
-@synthesize configureBlock = _configureBlock;
-@synthesize selectedBlock = _selectedBlock;
-@synthesize canEditRow = _canEditRow;
-@synthesize cellHeight = _cellHeight;
-@synthesize viewController = _viewController;
 
 - (id)init
 {
@@ -30,10 +20,10 @@ static const CGFloat DEFAULT_CELL_HEIGHT = 35.0f;
     if (self) {
         _canEditRow = NO;
         _cellHeight = DEFAULT_CELL_HEIGHT;
+        _shouldShowMenu = NO;
     }
     return self;
 }
-
 
 
 - (NSString*) cellIdentifier
@@ -81,12 +71,11 @@ static const CGFloat DEFAULT_CELL_HEIGHT = 35.0f;
 
 // select cell - respond to didSelectRow method
 // base implementation: no action
-- (void) selectCell
+- (void) didSelectCell
 {
     if (_selectedBlock) {
         _selectedBlock(self);
     }
 }
-
 
 @end
