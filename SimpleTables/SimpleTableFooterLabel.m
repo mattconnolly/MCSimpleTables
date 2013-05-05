@@ -25,10 +25,10 @@ static const CGFloat DEFAULT_MARGIN = 23.0f;
         
         _label = [[UILabel alloc] initWithFrame:CGRectZero];
         _label.backgroundColor = [UIColor clearColor];
-        _label.lineBreakMode = UILineBreakModeWordWrap;
-        _label.minimumFontSize = 12.0f;
+        _label.lineBreakMode = NSLineBreakByWordWrapping;
+        _label.minimumScaleFactor = 12.0f/14.0f;
         _label.numberOfLines = 0;
-        _label.textAlignment = UITextAlignmentCenter;
+        _label.textAlignment = NSTextAlignmentCenter;
         _label.font = [UIFont boldSystemFontOfSize:14.0f];
         _label.textColor = [UIColor colorWithRed:0.30f green:0.34f blue:0.43f alpha:1.0f];
         _label.shadowColor = [UIColor whiteColor];
@@ -44,8 +44,8 @@ static const CGFloat DEFAULT_MARGIN = 23.0f;
 - (CGSize) sizeThatFits:(CGSize)size
 {
     size.width -= self.margin * 2.0f;
-    CGSize label_size = [_label.text sizeWithFont:_label.font 
-                                constrainedToSize:size 
+    CGSize label_size = [_label.text sizeWithFont:_label.font
+                                constrainedToSize:size
                                     lineBreakMode:_label.lineBreakMode];
     label_size.width += self.margin * 2.0f;
     return label_size;
