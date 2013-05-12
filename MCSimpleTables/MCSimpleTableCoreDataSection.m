@@ -127,7 +127,7 @@
     [_cell didSelectCell];
     
     if (_cell.section.selectedBlock) {
-        _cell.section.selectedBlock(_cell.section, self.object);
+        _cell.section.selectedBlock((MCSimpleTableCoreDataCell*)self, self.object);
     }
 }
 
