@@ -5,19 +5,19 @@
 # To learn more about the attributes see http://docs.cocoapods.org/specification.html
 #
 Pod::Spec.new do |s|
-  s.name         = "SimpleTables"
-  s.version      = "0.1.1"
+  s.name         = "MCSimpleTables"
+  s.version      = "0.2.0"
   s.summary      = <<-DESC
     A simple UITableViewController subclass and helper classes for programmatically creating coded UITableViews.
     DESC
-  s.homepage     = "http://github.com/mattconnolly/SimpleTables"
+  s.homepage     = "http://github.com/mattconnolly/MCSimpleTables"
   # s.screenshots  = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license = { :type => 'BSD', :file => 'LICENSE.md' }
   s.author       = { "Matt Connolly" => "matt.connolly@me.com" }
 
   # Specify the location from where the source should be retrieved.
   #
-  s.source       = { :git => "ssh://soundevolution.dyndns.org/projects/SimpleTables", :tag => "0.1.0" }
+  s.source       = { :git => "git://github.com/mattconnolly/MCSimpleTables.git", :tag => "0.1.0" }
 
 
   # If this Pod runs only on iOS or OS X, then specify the platform and
@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
   # added to the Pods project. If the pattern is a directory then the
   # path will automatically have '*.{h,m,mm,c,cpp}' appended.
   #
-  s.source_files = 'SimpleTables' #, 'Classes/**/*.{h,m}'
+  s.source_files = 'MCSimpleTables' #, 'Classes/**/*.{h,m}'
   s.exclude_files = 'Classes/Exclude'
 
   # A list of file patterns which select the header files that should be
