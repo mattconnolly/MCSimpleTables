@@ -16,6 +16,8 @@
 #import <MCSimpleTables/MCSimpleTableCell.h>
 #import <MCSimpleTables/MCSimpleTableTextEditCell.h>
 #import <MCSimpleTables/MCSimpleTableFooterLabel.h>
+#import <MCSimpleTables/MCSimpleTableCoreDataSection.h>
+#import <MCSimpleTables/MCSimpleTableCoreDataCell.h>
 
 #endif
 
