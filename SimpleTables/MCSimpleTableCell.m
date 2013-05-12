@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 Sound Evolution Pty Ltd. All rights reserved.
 //
 
-#import "SimpleTableCell.h"
-#import "SimpleTableViewController.h"
+#import "MCSimpleTableCell.h"
+#import "MCSimpleTableViewController.h"
 
 static const CGFloat DEFAULT_CELL_HEIGHT = 41.0f;
 
-@implementation SimpleTableCell
+@implementation MCSimpleTableCell
 
 
 - (id)init

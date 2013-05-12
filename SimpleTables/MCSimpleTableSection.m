@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 Sound Evolution Pty Ltd. All rights reserved.
 //
 
-#import "SimpleTableSection.h"
-#import "SimpleTableViewController.h"
-#import "SimpleTableCell.h"
+#import "MCSimpleTableSection.h"
+#import "MCSimpleTableViewController.h"
+#import "MCSimpleTableCell.h"
 
-@implementation SimpleTableSection
+@implementation MCSimpleTableSection
 
 const static CGFloat VIEW_HEIGHT_PADDING = 8.0f;
 
@@ -30,24 +30,24 @@ const static CGFloat VIEW_HEIGHT_PADDING = 8.0f;
 }
 
 
-- (SimpleTableCell*) cellAtIndex:(NSUInteger)index
+- (MCSimpleTableCell*) cellAtIndex:(NSUInteger)index
 {
     return (self.cells)[index];
 }
 
 // convenience to add a cell to the cells array
-- (void) addCell:(SimpleTableCell*)cell
+- (void) addCell:(MCSimpleTableCell*)cell
 {
     [self.cells addObject:cell];
     cell.viewController = self.viewController;
 }
 
 
-- (void) setViewController:(SimpleTableViewController *)viewController
+- (void) setViewController:(MCSimpleTableViewController *)viewController
 {
     _viewController = viewController;
     
-    for (SimpleTableCell* cell in _cells) {
+    for (MCSimpleTableCell* cell in _cells) {
         cell.viewController = viewController;
     }
 }

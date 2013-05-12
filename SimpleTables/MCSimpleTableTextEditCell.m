@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Sound Evolution Pty Ltd. All rights reserved.
 //
 
-#import "SimpleTableTextEditCell.h"
+#import "MCSimpleTableTextEditCell.h"
 
 static CGRect DEFAULT_RECT = { { 0, 0 }, { 300.0f, 24.0f } };
 static CGFloat DEFAULT_CELL_HEIGHT = 55.0f;
@@ -16,7 +16,7 @@ static int TEXTFIELD_TAG = 999;
 
 
 
-@implementation SimpleTableTextEditCell
+@implementation MCSimpleTableTextEditCell
 
 
 - (id)init

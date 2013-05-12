@@ -8,17 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class SimpleTableCell;
-@class SimpleTableViewController;
-@class SimpleTableSection;
+@class MCSimpleTableCell;
+@class MCSimpleTableViewController;
+@class MCSimpleTableSection;
 
-typedef UIView*(^SimpleTableSectionViewBlock)(SimpleTableSection* section);
+typedef UIView*(^SimpleTableSectionViewBlock)(MCSimpleTableSection* section);
 
-@interface SimpleTableSection : NSObject
+@interface MCSimpleTableSection : NSObject
 {
     NSMutableArray* _cells;
     NSString* _title;
-    __weak SimpleTableViewController* _viewController;
+    __weak MCSimpleTableViewController* _viewController;
     SimpleTableSectionViewBlock _headerViewBlock;
     SimpleTableSectionViewBlock _footerViewBlock;
     UIView* _headerView;
@@ -47,7 +47,7 @@ typedef UIView*(^SimpleTableSectionViewBlock)(SimpleTableSection* section);
 - (CGFloat) footerHeightInTable:(UITableView*)tableView;
 
 // the SimpleTableViewController where this section is inserted
-@property (nonatomic, weak) SimpleTableViewController* viewController;
+@property (nonatomic, weak) MCSimpleTableViewController* viewController;
 
 // accessor for the tableView.
 @property (nonatomic, readonly) UITableView* tableView;
@@ -56,9 +56,9 @@ typedef UIView*(^SimpleTableSectionViewBlock)(SimpleTableSection* section);
 @property (nonatomic, readonly) NSUInteger cellCount;
 
 // access a specific cell
-- (SimpleTableCell*) cellAtIndex:(NSUInteger)index;
+- (MCSimpleTableCell*) cellAtIndex:(NSUInteger)index;
 
 // convenience to add a cell to the cells array
-- (void) addCell:(SimpleTableCell*)cell;
+- (void) addCell:(MCSimpleTableCell*)cell;
 
 @end

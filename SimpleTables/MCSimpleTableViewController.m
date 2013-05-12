@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 Sound Evolution Pty Ltd. All rights reserved.
 //
 
-#import "SimpleTableViewController.h"
-#import "SimpleTableSection.h"
-#import "SimpleTableCell.h"
+#import "MCSimpleTableViewController.h"
+#import "MCSimpleTableSection.h"
+#import "MCSimpleTableCell.h"
 
 
-@implementation SimpleTableViewController
+@implementation MCSimpleTableViewController
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -65,10 +65,10 @@
 }
 
 
-- (SimpleTableCell*)cellAtIndexPath:(NSIndexPath*)indexPath
+- (MCSimpleTableCell*)cellAtIndexPath:(NSIndexPath*)indexPath
 {
-    SimpleTableSection* section = (self.sections)[indexPath.section];
-    SimpleTableCell* simpleCell = [section cellAtIndex:indexPath.row];
+    MCSimpleTableSection* section = (self.sections)[indexPath.section];
+    MCSimpleTableCell* simpleCell = [section cellAtIndex:indexPath.row];
     
     // always setup the cell for this indexPath in case it has moved or is used for multiple
     // rows.
@@ -85,13 +85,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = (self.sections)[sectionIndex];
+    MCSimpleTableSection* section = (self.sections)[sectionIndex];
     return [section cellCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    MCSimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
     
     NSString *cellIdentifier = simpleCell.cellIdentifier;
     
@@ -111,19 +111,19 @@
 
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = (self.sections)[sectionIndex];
+    MCSimpleTableSection* section = (self.sections)[sectionIndex];
     return section.title;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = (self.sections)[sectionIndex];
+    MCSimpleTableSection* section = (self.sections)[sectionIndex];
     return [section footerView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = (self.sections)[sectionIndex];
+    MCSimpleTableSection* section = (self.sections)[sectionIndex];
     CGFloat height = [section footerHeightInTable:tableView];
     return height;
 }
@@ -131,13 +131,13 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = (self.sections)[sectionIndex];
+    MCSimpleTableSection* section = (self.sections)[sectionIndex];
     return [section headerView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
 {
-    SimpleTableSection* section = (self.sections)[sectionIndex];
+    MCSimpleTableSection* section = (self.sections)[sectionIndex];
     CGFloat height = [section headerHeightInTable:tableView];
     return height;
 }
@@ -166,14 +166,14 @@
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    MCSimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
     return [simpleCell canEditRow];
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    MCSimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
     return [simpleCell cellHeight];
 }
 
@@ -181,19 +181,19 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    MCSimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
     return simpleCell.shouldShowMenu;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
-    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    MCSimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
     return [simpleCell respondsToSelector:action];
 }
 
 - (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
-    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    MCSimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
     [simpleCell performSelector:action withObject:sender];
 }
 
@@ -232,7 +232,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
+    MCSimpleTableCell* simpleCell = [self cellAtIndexPath:indexPath];
     [simpleCell didSelectCell];
 }
 
@@ -248,7 +248,7 @@
 
 
 // convenience to add a section to the array of sections
-- (void) addSection:(SimpleTableSection*)section
+- (void) addSection:(MCSimpleTableSection*)section
 {
     [self.sections addObject:section];
     section.viewController = self;

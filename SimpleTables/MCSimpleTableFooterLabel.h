@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SimpleTableFooterLabel : UIView
+@interface MCSimpleTableFooterLabel : UIView
 {
     UILabel* _label;
     CGFloat _margin;

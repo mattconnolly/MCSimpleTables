@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SimpleTableCell.h"
+#import "MCSimpleTableCell.h"
 
 /**
  
@@ -20,12 +20,12 @@
  
  **/
 
-@class SimpleTableTextEditCell;
+@class MCSimpleTableTextEditCell;
 
-typedef void(^SimpleTableTextEditCell_DidBeginEditing)(SimpleTableTextEditCell* simpleCell, UITextField* textField);
-typedef void(^SimpleTableTextEditCell_DidEndEditing)(SimpleTableTextEditCell* simpleCell, UITextField* textField);
+typedef void(^SimpleTableTextEditCell_DidBeginEditing)(MCSimpleTableTextEditCell* simpleCell, UITextField* textField);
+typedef void(^SimpleTableTextEditCell_DidEndEditing)(MCSimpleTableTextEditCell* simpleCell, UITextField* textField);
 
-@interface SimpleTableTextEditCell : SimpleTableCell<UITextFieldDelegate>
+@interface MCSimpleTableTextEditCell : MCSimpleTableCell<UITextFieldDelegate>
 {
     int _textFieldHeight;
 }

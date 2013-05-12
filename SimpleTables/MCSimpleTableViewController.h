@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class SimpleTableSection;
+@class MCSimpleTableSection;
 
-@interface SimpleTableViewController : UITableViewController
+@interface MCSimpleTableViewController : UITableViewController
 {
     NSMutableArray* _sections;
     BOOL _usesCustomHeaderViews;
@@ -21,7 +21,7 @@
 @property (nonatomic, readonly) NSMutableArray* sections;
 
 // convenience to add a section to the array of sections
-- (void) addSection:(SimpleTableSection*)section;
+- (void) addSection:(MCSimpleTableSection*)section;
 
 // YES if we provide customer header / footer views in sections
 @property (nonatomic, assign) BOOL usesCustomHeaderViews;

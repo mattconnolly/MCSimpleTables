@@ -12,9 +12,9 @@
 static const CGFloat DEFAULT_MARGIN = 23.0f;
 
 
-#import "SimpleTableFooterLabel.h"
+#import "MCSimpleTableFooterLabel.h"
 
-@implementation SimpleTableFooterLabel
+@implementation MCSimpleTableFooterLabel
 
 
 - (id)init

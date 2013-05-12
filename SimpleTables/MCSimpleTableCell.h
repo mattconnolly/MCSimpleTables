@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class SimpleTableCell;
-@class SimpleTableViewController;
+@class MCSimpleTableCell;
+@class MCSimpleTableViewController;
 
 
-typedef UITableViewCell* (^SimpleCellCreateBlock)(SimpleTableCell* simpleCell);
-typedef void(^SimpleCellConfigureBlock)(SimpleTableCell* simpleCell, UITableViewCell* tableCell);
-typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
+typedef UITableViewCell* (^SimpleCellCreateBlock)(MCSimpleTableCell* simpleCell);
+typedef void(^SimpleCellConfigureBlock)(MCSimpleTableCell* simpleCell, UITableViewCell* tableCell);
+typedef void(^SimpleCellSelectedCellBlock)(MCSimpleTableCell* simpleCell);
 
-@interface SimpleTableCell : NSObject
+@interface MCSimpleTableCell : NSObject
 {
     Class _cellClass; // if nil, defaults to UITableViewCell
     NSString* _cellIdentifier; // if nil, the class name will be used. The style will always be appended so
@@ -36,7 +36,7 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
     SimpleCellSelectedCellBlock _selectedBlock;
     
     // weak reference to the view controller containing this cell
-    __weak SimpleTableViewController* _viewController;
+    __weak MCSimpleTableViewController* _viewController;
 }
 
 //
@@ -71,7 +71,7 @@ typedef void(^SimpleCellSelectedCellBlock)(SimpleTableCell* simpleCell);
 @property (nonatomic, assign) CGFloat cellHeight;
 
 // the SimpleTableViewController where this section is inserted
-@property (nonatomic, weak) SimpleTableViewController* viewController;
+@property (nonatomic, weak) MCSimpleTableViewController* viewController;
 
 // get the actual cell. This may return nil if the cell is not visible
 // If this SimpleTableCell instance controls multiple cells, then its value will only
