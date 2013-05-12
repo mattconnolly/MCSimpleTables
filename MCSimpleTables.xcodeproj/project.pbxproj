@@ -37,27 +37,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C9360E4D171047170040881C /* MCSimpleTables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCSimpleTables.h; sourceTree = "<group>"; };
-		C978890A156E3DE4008F2A54 /* MCSimpleTableFooterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSimpleTableFooterLabel.h; sourceTree = "<group>"; };
-		C978890B156E3DE4008F2A54 /* MCSimpleTableFooterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSimpleTableFooterLabel.m; sourceTree = "<group>"; };
-		C988FA89154748DC002C8665 /* MCSimpleTableTextEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSimpleTableTextEditCell.h; sourceTree = "<group>"; };
-		C988FA8A154748DC002C8665 /* MCSimpleTableTextEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSimpleTableTextEditCell.m; sourceTree = "<group>"; };
+		C9360E4D171047170040881C /* MCSimpleTables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCSimpleTables.h; path = MCSimpleTables/MCSimpleTables.h; sourceTree = SOURCE_ROOT; };
+		C978890A156E3DE4008F2A54 /* MCSimpleTableFooterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSimpleTableFooterLabel.h; path = MCSimpleTables/MCSimpleTableFooterLabel.h; sourceTree = SOURCE_ROOT; };
+		C978890B156E3DE4008F2A54 /* MCSimpleTableFooterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableFooterLabel.m; path = MCSimpleTables/MCSimpleTableFooterLabel.m; sourceTree = SOURCE_ROOT; };
+		C988FA89154748DC002C8665 /* MCSimpleTableTextEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSimpleTableTextEditCell.h; path = MCSimpleTables/MCSimpleTableTextEditCell.h; sourceTree = SOURCE_ROOT; };
+		C988FA8A154748DC002C8665 /* MCSimpleTableTextEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableTextEditCell.m; path = MCSimpleTables/MCSimpleTableTextEditCell.m; sourceTree = SOURCE_ROOT; };
 		C9D57ADD152B0F9300846DB8 /* libMCSimpleTables.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMCSimpleTables.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D57AE0152B0F9300846DB8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9D57AE4152B0F9300846DB8 /* MCSimpleTables-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MCSimpleTables-Prefix.pch"; sourceTree = "<group>"; };
+		C9D57AE4152B0F9300846DB8 /* MCSimpleTables-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MCSimpleTables-Prefix.pch"; path = "MCSimpleTables/MCSimpleTables-Prefix.pch"; sourceTree = "<group>"; };
 		C9D57AED152B0F9300846DB8 /* MCSimpleTablesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCSimpleTablesTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D57AEE152B0F9300846DB8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C9D57AF0152B0F9300846DB8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C9D57AF8152B0F9300846DB8 /* MCSimpleTablesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MCSimpleTablesTests-Info.plist"; sourceTree = "<group>"; };
 		C9D57AFA152B0F9300846DB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9D57AFC152B0F9300846DB8 /* SimpleTablesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTablesTests.h; sourceTree = "<group>"; };
-		C9D57AFD152B0F9300846DB8 /* SimpleTablesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTablesTests.m; sourceTree = "<group>"; };
-		C9DE8B76152B1A0300101FB5 /* MCSimpleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSimpleTableViewController.h; sourceTree = "<group>"; };
-		C9DE8B77152B1A0300101FB5 /* MCSimpleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSimpleTableViewController.m; sourceTree = "<group>"; };
-		C9DE8B7B152B1ACF00101FB5 /* MCSimpleTableSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSimpleTableSection.h; sourceTree = "<group>"; };
-		C9DE8B7C152B1ACF00101FB5 /* MCSimpleTableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSimpleTableSection.m; sourceTree = "<group>"; };
-		C9DE8B7F152B1C2600101FB5 /* MCSimpleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSimpleTableCell.h; sourceTree = "<group>"; };
-		C9DE8B80152B1C2600101FB5 /* MCSimpleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSimpleTableCell.m; sourceTree = "<group>"; };
+		C9D57AFC152B0F9300846DB8 /* SimpleTablesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SimpleTablesTests.h; path = MCSimpleTablesTests/SimpleTablesTests.h; sourceTree = SOURCE_ROOT; };
+		C9D57AFD152B0F9300846DB8 /* SimpleTablesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SimpleTablesTests.m; path = MCSimpleTablesTests/SimpleTablesTests.m; sourceTree = SOURCE_ROOT; };
+		C9DE8B76152B1A0300101FB5 /* MCSimpleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSimpleTableViewController.h; path = MCSimpleTables/MCSimpleTableViewController.h; sourceTree = SOURCE_ROOT; };
+		C9DE8B77152B1A0300101FB5 /* MCSimpleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableViewController.m; path = MCSimpleTables/MCSimpleTableViewController.m; sourceTree = SOURCE_ROOT; };
+		C9DE8B7B152B1ACF00101FB5 /* MCSimpleTableSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSimpleTableSection.h; path = MCSimpleTables/MCSimpleTableSection.h; sourceTree = SOURCE_ROOT; };
+		C9DE8B7C152B1ACF00101FB5 /* MCSimpleTableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableSection.m; path = MCSimpleTables/MCSimpleTableSection.m; sourceTree = SOURCE_ROOT; };
+		C9DE8B7F152B1C2600101FB5 /* MCSimpleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSimpleTableCell.h; path = MCSimpleTables/MCSimpleTableCell.h; sourceTree = SOURCE_ROOT; };
+		C9DE8B80152B1C2600101FB5 /* MCSimpleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableCell.m; path = MCSimpleTables/MCSimpleTableCell.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,7 +365,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/SimpleTables.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SimpleTables/MCSimpleTables-Prefix.pch";
+				GCC_PREFIX_HEADER = "MCSimpleTables/MCSimpleTables-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = MCSimpleTables;
 				SKIP_INSTALL = YES;
@@ -377,7 +377,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/SimpleTables.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SimpleTables/MCSimpleTables-Prefix.pch";
+				GCC_PREFIX_HEADER = "MCSimpleTables/MCSimpleTables-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = MCSimpleTables;
 				SKIP_INSTALL = YES;
