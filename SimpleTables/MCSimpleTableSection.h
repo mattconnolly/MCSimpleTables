@@ -3,7 +3,7 @@
 //  SimpleTables
 //
 //  Created by Matt Connolly on 3/04/12.
-//  Copyright (c) 2012 Sound Evolution Pty Ltd. All rights reserved.
+//  Copyright (c) 2012 Matthew Connolly. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

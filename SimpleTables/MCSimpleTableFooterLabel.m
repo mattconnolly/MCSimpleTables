@@ -3,7 +3,7 @@
 //  SimpleTables
 //
 //  Created by Matt Connolly on 24/05/12.
-//  Copyright (c) 2012 Sound Evolution Pty Ltd. All rights reserved.
+//  Copyright (c) 2012 Matthew Connolly. All rights reserved.
 //
 // This isn't actually a label, but a view that contains the label and gives it a reasonable
 // margin and some auto-sizing behaviour
