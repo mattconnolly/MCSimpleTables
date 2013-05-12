@@ -1,5 +1,5 @@
 //
-//  SimpleTableSection.h
+//  MCSimpleTableSection.h
 //  SimpleTables
 //
 //  Created by Matt Connolly on 3/04/12.
@@ -12,22 +12,22 @@
 @class MCSimpleTableViewController;
 @class MCSimpleTableSection;
 
-typedef UIView*(^SimpleTableSectionViewBlock)(MCSimpleTableSection* section);
+typedef UIView*(^MCSimpleTableSectionViewBlock)(MCSimpleTableSection* section);
 
 @interface MCSimpleTableSection : NSObject
 {
     NSMutableArray* _cells;
     NSString* _title;
     __weak MCSimpleTableViewController* _viewController;
-    SimpleTableSectionViewBlock _headerViewBlock;
-    SimpleTableSectionViewBlock _footerViewBlock;
+    MCSimpleTableSectionViewBlock _headerViewBlock;
+    MCSimpleTableSectionViewBlock _footerViewBlock;
     UIView* _headerView;
     UIView* _footerView;
     CGFloat _headerHeight;
     CGFloat _footerHeight;
 }
 
-// array of SimpleTableCell objects
+// array of MCSimpleTableCell objects
 @property (nonatomic, readonly) NSMutableArray* cells; 
 
 // title to show in table view
@@ -35,8 +35,8 @@ typedef UIView*(^SimpleTableSectionViewBlock)(MCSimpleTableSection* section);
 
 // block to generate a customer header / footer view for the section, only 
 // used if set and the corresponding view is nil
-@property (nonatomic, copy) SimpleTableSectionViewBlock headerViewBlock;
-@property (nonatomic, copy) SimpleTableSectionViewBlock footerViewBlock;
+@property (nonatomic, copy) MCSimpleTableSectionViewBlock headerViewBlock;
+@property (nonatomic, copy) MCSimpleTableSectionViewBlock footerViewBlock;
 @property (nonatomic, strong) UIView* headerView;
 @property (nonatomic, strong) UIView* footerView;
 

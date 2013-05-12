@@ -1,5 +1,5 @@
 //
-//  SimpleTableSection.m
+//  MCSimpleTableSection.m
 //  SimpleTables
 //
 //  Created by Matt Connolly on 3/04/12.

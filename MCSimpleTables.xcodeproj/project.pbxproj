@@ -24,6 +24,10 @@
 		C9DE8B7E152B1AD000101FB5 /* MCSimpleTableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DE8B7C152B1ACF00101FB5 /* MCSimpleTableSection.m */; };
 		C9DE8B81152B1C2600101FB5 /* MCSimpleTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = C9DE8B7F152B1C2600101FB5 /* MCSimpleTableCell.h */; };
 		C9DE8B82152B1C2600101FB5 /* MCSimpleTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DE8B80152B1C2600101FB5 /* MCSimpleTableCell.m */; };
+		C9F56AF5173FA4E9004354E9 /* MCSimpleTableCoreDataSection.h in Headers */ = {isa = PBXBuildFile; fileRef = C9F56AF3173FA4E9004354E9 /* MCSimpleTableCoreDataSection.h */; };
+		C9F56AF6173FA4E9004354E9 /* MCSimpleTableCoreDataSection.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F56AF4173FA4E9004354E9 /* MCSimpleTableCoreDataSection.m */; };
+		C9F56AF9173FAB26004354E9 /* MCSimpleTableCoreDataCell.h in Headers */ = {isa = PBXBuildFile; fileRef = C9F56AF7173FAB26004354E9 /* MCSimpleTableCoreDataCell.h */; };
+		C9F56AFA173FAB26004354E9 /* MCSimpleTableCoreDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F56AF8173FAB26004354E9 /* MCSimpleTableCoreDataCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		C9DE8B7C152B1ACF00101FB5 /* MCSimpleTableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableSection.m; path = MCSimpleTables/MCSimpleTableSection.m; sourceTree = SOURCE_ROOT; };
 		C9DE8B7F152B1C2600101FB5 /* MCSimpleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSimpleTableCell.h; path = MCSimpleTables/MCSimpleTableCell.h; sourceTree = SOURCE_ROOT; };
 		C9DE8B80152B1C2600101FB5 /* MCSimpleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableCell.m; path = MCSimpleTables/MCSimpleTableCell.m; sourceTree = SOURCE_ROOT; };
+		C9F56AF3173FA4E9004354E9 /* MCSimpleTableCoreDataSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSimpleTableCoreDataSection.h; path = MCSimpleTables/MCSimpleTableCoreDataSection.h; sourceTree = SOURCE_ROOT; };
+		C9F56AF4173FA4E9004354E9 /* MCSimpleTableCoreDataSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableCoreDataSection.m; path = MCSimpleTables/MCSimpleTableCoreDataSection.m; sourceTree = SOURCE_ROOT; };
+		C9F56AF7173FAB26004354E9 /* MCSimpleTableCoreDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSimpleTableCoreDataCell.h; path = MCSimpleTables/MCSimpleTableCoreDataCell.h; sourceTree = SOURCE_ROOT; };
+		C9F56AF8173FAB26004354E9 /* MCSimpleTableCoreDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableCoreDataCell.m; path = MCSimpleTables/MCSimpleTableCoreDataCell.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +125,10 @@
 			children = (
 				C9DE8B7F152B1C2600101FB5 /* MCSimpleTableCell.h */,
 				C9DE8B80152B1C2600101FB5 /* MCSimpleTableCell.m */,
+				C9F56AF7173FAB26004354E9 /* MCSimpleTableCoreDataCell.h */,
+				C9F56AF8173FAB26004354E9 /* MCSimpleTableCoreDataCell.m */,
+				C9F56AF3173FA4E9004354E9 /* MCSimpleTableCoreDataSection.h */,
+				C9F56AF4173FA4E9004354E9 /* MCSimpleTableCoreDataSection.m */,
 				C978890A156E3DE4008F2A54 /* MCSimpleTableFooterLabel.h */,
 				C978890B156E3DE4008F2A54 /* MCSimpleTableFooterLabel.m */,
 				C9360E4D171047170040881C /* MCSimpleTables.h */,
@@ -171,6 +183,8 @@
 				C9DE8B81152B1C2600101FB5 /* MCSimpleTableCell.h in Headers */,
 				C988FA8B154748DC002C8665 /* MCSimpleTableTextEditCell.h in Headers */,
 				C978890C156E3DE4008F2A54 /* MCSimpleTableFooterLabel.h in Headers */,
+				C9F56AF5173FA4E9004354E9 /* MCSimpleTableCoreDataSection.h in Headers */,
+				C9F56AF9173FAB26004354E9 /* MCSimpleTableCoreDataCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +234,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "Sound Evolution Pty Ltd";
+				ORGANIZATIONNAME = "Matthew Connolly";
 			};
 			buildConfigurationList = C9D57AD7152B0F9300846DB8 /* Build configuration list for PBXProject "MCSimpleTables" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -277,6 +291,8 @@
 				C9DE8B82152B1C2600101FB5 /* MCSimpleTableCell.m in Sources */,
 				C988FA8C154748DC002C8665 /* MCSimpleTableTextEditCell.m in Sources */,
 				C978890D156E3DE4008F2A54 /* MCSimpleTableFooterLabel.m in Sources */,
+				C9F56AF6173FA4E9004354E9 /* MCSimpleTableCoreDataSection.m in Sources */,
+				C9F56AFA173FAB26004354E9 /* MCSimpleTableCoreDataCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

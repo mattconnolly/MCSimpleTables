@@ -1,5 +1,5 @@
 //
-//  SimpleTableCell.h
+//  MCSimpleTableCell.h
 //  SimpleTables
 //
 //  Created by Matt Connolly on 3/04/12.
@@ -12,9 +12,9 @@
 @class MCSimpleTableViewController;
 
 
-typedef UITableViewCell* (^SimpleCellCreateBlock)(MCSimpleTableCell* simpleCell);
-typedef void(^SimpleCellConfigureBlock)(MCSimpleTableCell* simpleCell, UITableViewCell* tableCell);
-typedef void(^SimpleCellSelectedCellBlock)(MCSimpleTableCell* simpleCell);
+typedef UITableViewCell* (^MCSimpleCellCreateBlock)(MCSimpleTableCell* simpleCell);
+typedef void(^MCSimpleCellConfigureBlock)(MCSimpleTableCell* simpleCell, UITableViewCell* tableCell);
+typedef void(^MCSimpleCellSelectedCellBlock)(MCSimpleTableCell* simpleCell);
 
 @interface MCSimpleTableCell : NSObject
 {
@@ -31,9 +31,9 @@ typedef void(^SimpleCellSelectedCellBlock)(MCSimpleTableCell* simpleCell);
     UITableViewCellStyle _style;
     
     // blocks for configuration and responding to actions
-    SimpleCellCreateBlock _createBlock;
-    SimpleCellConfigureBlock _configureBlock;
-    SimpleCellSelectedCellBlock _selectedBlock;
+    MCSimpleCellCreateBlock _createBlock;
+    MCSimpleCellConfigureBlock _configureBlock;
+    MCSimpleCellSelectedCellBlock _selectedBlock;
     
     // weak reference to the view controller containing this cell
     __weak MCSimpleTableViewController* _viewController;
@@ -56,13 +56,13 @@ typedef void(^SimpleCellSelectedCellBlock)(MCSimpleTableCell* simpleCell);
 @property (nonatomic, strong) NSIndexPath* indexPath;
 
 // block for creating the cell
-@property (nonatomic, copy) SimpleCellCreateBlock createBlock;
+@property (nonatomic, copy) MCSimpleCellCreateBlock createBlock;
 
 // block for configuring the cell
-@property (nonatomic, copy) SimpleCellConfigureBlock configureBlock;
+@property (nonatomic, copy) MCSimpleCellConfigureBlock configureBlock;
 
 // block for responding to selections
-@property (nonatomic, copy) SimpleCellSelectedCellBlock selectedBlock;
+@property (nonatomic, copy) MCSimpleCellSelectedCellBlock selectedBlock;
 
 // true if the row can be edited
 @property (nonatomic, assign) BOOL canEditRow;
@@ -74,7 +74,7 @@ typedef void(^SimpleCellSelectedCellBlock)(MCSimpleTableCell* simpleCell);
 @property (nonatomic, weak) MCSimpleTableViewController* viewController;
 
 // get the actual cell. This may return nil if the cell is not visible
-// If this SimpleTableCell instance controls multiple cells, then its value will only
+// If this MCSimpleTableCell instance controls multiple cells, then its value will only
 // be reliable after the indexPath property has been set
 @property (nonatomic, readonly) UITableViewCell* tableCell;
 

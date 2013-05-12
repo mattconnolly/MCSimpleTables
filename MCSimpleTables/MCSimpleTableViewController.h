@@ -17,7 +17,7 @@
     BOOL _usesCustomFooterViews;
 }
 
-// array of SimpleTableSection objects
+// array of MCSimpleTableSection objects
 @property (nonatomic, readonly) NSMutableArray* sections;
 
 // convenience to add a section to the array of sections
