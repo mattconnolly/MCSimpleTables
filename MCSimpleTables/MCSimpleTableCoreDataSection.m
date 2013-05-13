@@ -9,15 +9,8 @@
 #import "MCSimpleTableCoreDataSection.h"
 #import "MCSimpleTableCoreDataCell.h"
 #import "MCSimpleTableViewController.h"
+#import "MCSimpleTableCoreDataSectionCellProxy.h"
 #import <CoreData/CoreData.h>
-
-// private class for linking MCSimpleTableCell
-@interface MCSimpleTablCoreDataSectionCellProxy : NSObject 
-@property (nonatomic,weak) MCSimpleTableCoreDataCell* cell;
-@property (nonatomic,weak) NSManagedObject* object;
-@property (nonatomic,retain) NSIndexPath* indexPath;
-- (id)initWithPrototypeCell:(MCSimpleTableCoreDataCell*)cell andManagedObject:(NSManagedObject*)object;
-@end
 
 @implementation MCSimpleTableCoreDataSection
 
@@ -68,8 +61,8 @@
         object = info.objects[index];
     }
     
-    MCSimpleTablCoreDataSectionCellProxy* proxy;
-    proxy = [[MCSimpleTablCoreDataSectionCellProxy alloc] initWithPrototypeCell:self.prototypeCell
+    MCSimpleTableCoreDataSectionCellProxy* proxy;
+    proxy = [[MCSimpleTableCoreDataSectionCellProxy alloc] initWithPrototypeCell:self.prototypeCell
                                                                andManagedObject:object];
     return (MCSimpleTableCell*)proxy;
 }
@@ -87,24 +80,14 @@
 
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.viewController.tableView beginUpdates];
+    [self.tableView beginUpdates];
 }
 
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
     
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [_viewController.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                                     withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [_viewController.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                                     withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
+    // this class is for single section use. No action required here.
 }
 
 
@@ -113,90 +96,47 @@
       newIndexPath:(NSIndexPath *)newIndexPath {
     
     UITableView *tableView = self.tableView;
+    if (indexPath)
+    {
+        indexPath = [NSIndexPath indexPathForRow:indexPath.row
+                                       inSection:_sectionIndex];
+    }
+    if (newIndexPath)
+    {
+        newIndexPath = [NSIndexPath indexPathForRow:newIndexPath.row
+                                          inSection:_sectionIndex];
+    }
     
     switch(type) {
             
         case NSFetchedResultsChangeInsert:
-            [_viewController.tableView insertRowsAtIndexPaths:@[newIndexPath]
-                                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [_viewController.tableView deleteRowsAtIndexPaths:@[indexPath]
-                                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [_viewController.tableView reloadRowsAtIndexPaths:@[indexPath]
-                                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView reloadRowsAtIndexPaths:@[indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeMove:
-            [_viewController.tableView deleteRowsAtIndexPaths:@[indexPath]
-                                             withRowAnimation:UITableViewRowAnimationFade];
-            [_viewController.tableView insertRowsAtIndexPaths:@[newIndexPath]
-                                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
 
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [_viewController.tableView endUpdates];
+    [self.tableView endUpdates];
 }
 
 @end
 
-
-@implementation MCSimpleTablCoreDataSectionCellProxy
-
-- (id)initWithPrototypeCell:(MCSimpleTableCoreDataCell*)cell andManagedObject:(NSManagedObject*)object;
-{
-    self = [super init];
-    if (self) {
-        _object = object;
-        _cell = cell;
-    }
-    return self;
-}
-
-- (BOOL)respondsToSelector:(SEL)aSelector
-{
-    return [self.cell respondsToSelector:aSelector];
-}
-
-- (IMP)methodForSelector:(SEL)aSelector
-{
-    return [self.cell methodForSelector:aSelector];
-}
-
-- (id)forwardingTargetForSelector:(SEL)aSelector
-{
-    return self.cell;
-}
-
-// called after create OR dequeue.
-// base implementation: calls the block if provided, or no action
-- (void) configureCell:(UITableViewCell*)tableCell
-{
-    [_cell configureCell:tableCell];
-    
-    if (_cell.section.configureBlock) {
-        _cell.section.configureBlock(_cell.section, tableCell, self.object);
-    }
-}
-
-// select cell - respond to didSelectRow method
-// base implementation: no action
-- (void) didSelectCell
-{
-    [_cell didSelectCell];
-    
-    if (_cell.section.selectedBlock) {
-        _cell.section.selectedBlock((MCSimpleTableCoreDataCell*)self, self.object);
-    }
-}
-
-
-
-@end

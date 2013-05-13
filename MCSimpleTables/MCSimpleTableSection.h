@@ -25,6 +25,7 @@ typedef UIView*(^MCSimpleTableSectionViewBlock)(MCSimpleTableSection* section);
     UIView* _footerView;
     CGFloat _headerHeight;
     CGFloat _footerHeight;
+    NSInteger _sectionIndex;
 }
 
 // array of MCSimpleTableCell objects
@@ -54,6 +55,9 @@ typedef UIView*(^MCSimpleTableSectionViewBlock)(MCSimpleTableSection* section);
 
 // count of cells in the section
 @property (nonatomic, readonly) NSUInteger cellCount;
+
+// set by controller when added to a table
+@property (nonatomic, assign) NSInteger sectionIndex;
 
 // access a specific cell
 - (MCSimpleTableCell*) cellAtIndex:(NSUInteger)index;

@@ -252,6 +252,7 @@
 {
     [self.sections addObject:section];
     section.viewController = self;
+    section.sectionIndex = [self.sections indexOfObject:section];
 }
 
 @end

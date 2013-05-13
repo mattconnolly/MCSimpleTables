@@ -28,6 +28,8 @@
 		C9F56AF6173FA4E9004354E9 /* MCSimpleTableCoreDataSection.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F56AF4173FA4E9004354E9 /* MCSimpleTableCoreDataSection.m */; };
 		C9F56AF9173FAB26004354E9 /* MCSimpleTableCoreDataCell.h in Headers */ = {isa = PBXBuildFile; fileRef = C9F56AF7173FAB26004354E9 /* MCSimpleTableCoreDataCell.h */; };
 		C9F56AFA173FAB26004354E9 /* MCSimpleTableCoreDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F56AF8173FAB26004354E9 /* MCSimpleTableCoreDataCell.m */; };
+		C9F56B5D1741070E004354E9 /* MCSimpleTableCoreDataSectionCellProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = C9F56B5B1741070E004354E9 /* MCSimpleTableCoreDataSectionCellProxy.h */; };
+		C9F56B5E1741070E004354E9 /* MCSimpleTableCoreDataSectionCellProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F56B5C1741070E004354E9 /* MCSimpleTableCoreDataSectionCellProxy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		C9F56AF4173FA4E9004354E9 /* MCSimpleTableCoreDataSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableCoreDataSection.m; path = MCSimpleTables/MCSimpleTableCoreDataSection.m; sourceTree = SOURCE_ROOT; };
 		C9F56AF7173FAB26004354E9 /* MCSimpleTableCoreDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSimpleTableCoreDataCell.h; path = MCSimpleTables/MCSimpleTableCoreDataCell.h; sourceTree = SOURCE_ROOT; };
 		C9F56AF8173FAB26004354E9 /* MCSimpleTableCoreDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableCoreDataCell.m; path = MCSimpleTables/MCSimpleTableCoreDataCell.m; sourceTree = SOURCE_ROOT; };
+		C9F56B5B1741070E004354E9 /* MCSimpleTableCoreDataSectionCellProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSimpleTableCoreDataSectionCellProxy.h; path = MCSimpleTables/MCSimpleTableCoreDataSectionCellProxy.h; sourceTree = SOURCE_ROOT; };
+		C9F56B5C1741070E004354E9 /* MCSimpleTableCoreDataSectionCellProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSimpleTableCoreDataSectionCellProxy.m; path = MCSimpleTables/MCSimpleTableCoreDataSectionCellProxy.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 				C9F56AF8173FAB26004354E9 /* MCSimpleTableCoreDataCell.m */,
 				C9F56AF3173FA4E9004354E9 /* MCSimpleTableCoreDataSection.h */,
 				C9F56AF4173FA4E9004354E9 /* MCSimpleTableCoreDataSection.m */,
+				C9F56B5B1741070E004354E9 /* MCSimpleTableCoreDataSectionCellProxy.h */,
+				C9F56B5C1741070E004354E9 /* MCSimpleTableCoreDataSectionCellProxy.m */,
 				C978890A156E3DE4008F2A54 /* MCSimpleTableFooterLabel.h */,
 				C978890B156E3DE4008F2A54 /* MCSimpleTableFooterLabel.m */,
 				C9360E4D171047170040881C /* MCSimpleTables.h */,
@@ -185,6 +191,7 @@
 				C978890C156E3DE4008F2A54 /* MCSimpleTableFooterLabel.h in Headers */,
 				C9F56AF5173FA4E9004354E9 /* MCSimpleTableCoreDataSection.h in Headers */,
 				C9F56AF9173FAB26004354E9 /* MCSimpleTableCoreDataCell.h in Headers */,
+				C9F56B5D1741070E004354E9 /* MCSimpleTableCoreDataSectionCellProxy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +300,7 @@
 				C978890D156E3DE4008F2A54 /* MCSimpleTableFooterLabel.m in Sources */,
 				C9F56AF6173FA4E9004354E9 /* MCSimpleTableCoreDataSection.m in Sources */,
 				C9F56AFA173FAB26004354E9 /* MCSimpleTableCoreDataCell.m in Sources */,
+				C9F56B5E1741070E004354E9 /* MCSimpleTableCoreDataSectionCellProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
