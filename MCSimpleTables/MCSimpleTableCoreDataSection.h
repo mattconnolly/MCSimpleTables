@@ -31,6 +31,7 @@ typedef void(^MCSimpleTableCoreDataCellSelectedBlock)(MCSimpleTableCoreDataCell*
 }
 
 @property (nonatomic,readonly) NSFetchRequest* fetchRequest;
+@property (nonatomic,readonly) NSFetchedResultsController* fetchedResultsController;
 
 // a special simple table class instance that is re-used for each NSManagedObject
 // shown in the section. Only one instance of this object exists for the whole

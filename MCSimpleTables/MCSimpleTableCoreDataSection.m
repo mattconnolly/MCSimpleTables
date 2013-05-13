@@ -8,6 +8,7 @@
 
 #import "MCSimpleTableCoreDataSection.h"
 #import "MCSimpleTableCoreDataCell.h"
+#import "MCSimpleTableViewController.h"
 #import <CoreData/CoreData.h>
 
 // private class for linking MCSimpleTableCell
@@ -19,6 +20,8 @@
 @end
 
 @implementation MCSimpleTableCoreDataSection
+
+@synthesize fetchedResultsController = _controller;
 
 - (id)initWithFetchRequest:(NSFetchRequest*)fetchRequest
       managedObjectContext:(NSManagedObjectContext *)context
@@ -79,6 +82,69 @@
 }
 
 
+
+#pragma mark NSFetchedResultsControllerDelegate protocol methods
+
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.viewController.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [_viewController.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                                     withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [_viewController.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                                     withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [_viewController.tableView insertRowsAtIndexPaths:@[newIndexPath]
+                                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [_viewController.tableView deleteRowsAtIndexPaths:@[indexPath]
+                                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [_viewController.tableView reloadRowsAtIndexPaths:@[indexPath]
+                                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [_viewController.tableView deleteRowsAtIndexPaths:@[indexPath]
+                                             withRowAnimation:UITableViewRowAnimationFade];
+            [_viewController.tableView insertRowsAtIndexPaths:@[newIndexPath]
+                                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [_viewController.tableView endUpdates];
+}
+
 @end
 
 
@@ -130,6 +196,7 @@
         _cell.section.selectedBlock((MCSimpleTableCoreDataCell*)self, self.object);
     }
 }
+
 
 
 @end
