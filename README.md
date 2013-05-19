@@ -14,7 +14,63 @@ Note that creating all of these objects does use more memory than a direct UITab
 
 Create a view controller that is a subclass of `MCSimpleTableViewController`, and in its `viewDidLoad` method, construct the sections and cells required. Example for a simple settings page:
 
-
+	- (void)viewDidLoad
+	{
+	    [super viewDidLoad];
+		// Do any additional setup after loading the view.
+    
+	    // create a section for our cells:
+	    MCSimpleTableSection* section = [[MCSimpleTableSection alloc] init];
+	    section.title = @"Configuration";
+    
+	    // create a cell with a switch in it
+	    MCSimpleTableCell* cell = [[MCSimpleTableCell alloc] init];
+	    cell.cellIdentifier = @"switch";
+	    cell.configureBlock = ^(MCSimpleTableCell* cell, UITableViewCell* tableCell)
+	    {
+	        tableCell.textLabel.text = @"On/off setting";
+	        UISwitch* control = [[UISwitch alloc] initWithFrame:CGRectZero];
+	        control.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"switch"];
+	        [control addTarget:self
+	                    action:@selector(switchChanged:)
+	          forControlEvents:UIControlEventValueChanged];
+	        tableCell.accessoryView = control;
+	        tableCell.selectionStyle = UITableViewCellSelectionStyleNone;
+	    };
+	    [section addCell:cell];
+    
+	    // create a cell with a text edit field in it.
+	    MCSimpleTableTextEditCell* textEditCell = [[MCSimpleTableTextEditCell alloc] init];
+	    textEditCell.cellIdentifier = @"text-edit-cell";
+	    textEditCell.configureBlock = ^(MCSimpleTableCell* cell, UITableViewCell* tableCell)
+	    {
+	        tableCell.textLabel.text = @"Your name:";
+	        MCSimpleTableTextEditCell* textCell = (MCSimpleTableTextEditCell*)cell;
+	        textCell.textField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"name"];
+	    };
+	    textEditCell.didEndEditingBlock = ^(MCSimpleTableTextEditCell* simpleCell, UITextField* textField)
+	    {
+	        // save changed text into defaults
+	        [[NSUserDefaults standardUserDefaults] setObject:textField.text
+	                                                  forKey:@"name"];
+	    };
+	    [section addCell:textEditCell];
+    
+	    [self addSection:section];
+	}
+    
+	- (void)viewDidDisappear:(BOOL)animated
+	{
+	    [super viewDidDisappear:animated];
+    
+	    [[NSUserDefaults standardUserDefaults] synchronize];
+	}
+    
+	- (IBAction)switchChanged:(id)sender
+	{
+	    UISwitch* control = (UISwitch*)sender;
+	    [[NSUserDefaults standardUserDefaults] setBool:control.isOn forKey:@"switch"];
+	}
 
 ## Requirements
 
