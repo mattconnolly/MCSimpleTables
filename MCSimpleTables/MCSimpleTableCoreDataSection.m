@@ -46,25 +46,32 @@
 
 - (NSUInteger)cellCount
 {
-    NSUInteger min = self.showsNoObjectsCell ? 1 : 0;
+    NSUInteger min = (self.noObjectCell != nil) ? 1 : 0;
     
     id<NSFetchedResultsSectionInfo> info = [_controller.sections objectAtIndex:0];
-    return MAX(min, [info numberOfObjects]);
+    NSUInteger numberOfObjects = [info numberOfObjects];
+    return MAX(min, numberOfObjects);
 }
 
 - (MCSimpleTableCell*) cellAtIndex:(NSUInteger)index
 {
     NSManagedObject* object = nil;
-    id<NSFetchedResultsSectionInfo> info = [_controller.sections objectAtIndex:0];
+    MCSimpleTableCell* cell = nil;
     
-    if (info.numberOfObjects > 0 && index < info.objects.count) {
+    id<NSFetchedResultsSectionInfo> info = [_controller.sections objectAtIndex:0];
+    NSUInteger numberOfObjects = [info numberOfObjects];
+    
+    if (numberOfObjects > 0 && index < info.objects.count) {
         object = info.objects[index];
+        MCSimpleTableCoreDataSectionCellProxy* proxy;
+        proxy = [[MCSimpleTableCoreDataSectionCellProxy alloc] initWithPrototypeCell:self.prototypeCell
+                                                                    andManagedObject:object];
+        cell = (MCSimpleTableCell*)proxy;
+    } else {
+        cell = self.noObjectCell;
     }
     
-    MCSimpleTableCoreDataSectionCellProxy* proxy;
-    proxy = [[MCSimpleTableCoreDataSectionCellProxy alloc] initWithPrototypeCell:self.prototypeCell
-                                                               andManagedObject:object];
-    return (MCSimpleTableCell*)proxy;
+    return cell;
 }
 
 - (void) addCell:(MCSimpleTableCell*)cell;
@@ -96,39 +103,52 @@
       newIndexPath:(NSIndexPath *)newIndexPath {
     
     UITableView *tableView = self.tableView;
-    if (indexPath)
-    {
+    if (indexPath) {
         indexPath = [NSIndexPath indexPathForRow:indexPath.row
                                        inSection:_sectionIndex];
     }
-    if (newIndexPath)
-    {
+    if (newIndexPath) {
         newIndexPath = [NSIndexPath indexPathForRow:newIndexPath.row
                                           inSection:_sectionIndex];
     }
     
+    id<NSFetchedResultsSectionInfo> info = [_controller.sections objectAtIndex:0];
+    NSInteger numObjects = info.numberOfObjects;
+    
     switch(type) {
             
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
+            if (self.noObjectCell != nil && numObjects == 1 && newIndexPath.row == 0) {
+                // swap no objects cell for first cell;
+                [tableView reloadRowsAtIndexPaths:@[newIndexPath]
+                                 withRowAnimation:self.rowAnimation];
+            } else {
+                [tableView insertRowsAtIndexPaths:@[newIndexPath]
+                                 withRowAnimation:self.rowAnimation];
+            }
             break;
             
         case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
+            if (self.noObjectCell != nil && numObjects == 0 && indexPath.row == 0) {
+                // swap out last cell for no objects cell
+                [tableView reloadRowsAtIndexPaths:@[indexPath]
+                                 withRowAnimation:self.rowAnimation];
+            } else {
+                [tableView deleteRowsAtIndexPaths:@[indexPath]
+                                 withRowAnimation:self.rowAnimation];
+            }
             break;
             
         case NSFetchedResultsChangeUpdate:
             [tableView reloadRowsAtIndexPaths:@[indexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
+                             withRowAnimation:self.rowAnimation];
             break;
             
         case NSFetchedResultsChangeMove:
             [tableView deleteRowsAtIndexPaths:@[indexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
+                             withRowAnimation:self.rowAnimation];
             [tableView insertRowsAtIndexPaths:@[newIndexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
+                             withRowAnimation:self.rowAnimation];
             break;
     }
 }

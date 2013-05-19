@@ -46,9 +46,11 @@ typedef void(^MCSimpleTableCoreDataCellSelectedBlock)(MCSimpleTableCoreDataCell*
 // block for responding to selections
 @property (nonatomic, copy) MCSimpleTableCoreDataCellSelectedBlock selectedBlock;
 
-@property (nonatomic, assign) BOOL showsNoObjectsCell; // does the section show a "no objects"
-// cell when the section is empty?
+// the cell to show when there are no objects in the fetched results. nil means show no cell.
+@property (nonatomic, retain) MCSimpleTableCell* noObjectCell;
 
+// what animation to use when adding/removing/reloading cells in the section
+@property (nonatomic, assign) UITableViewRowAnimation rowAnimation;
 
 - (id)initWithFetchRequest:(NSFetchRequest*)fetchRequest
       managedObjectContext:(NSManagedObjectContext *)context
