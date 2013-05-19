@@ -28,6 +28,7 @@ typedef void(^SimpleTableTextEditCell_DidEndEditing)(MCSimpleTableTextEditCell* 
 @interface MCSimpleTableTextEditCell : MCSimpleTableCell<UITextFieldDelegate>
 {
     int _textFieldHeight;
+    UITextField* _textField; // used only during configuration
 }
 
 @property (nonatomic, readonly) UITextField* textField;
@@ -48,5 +49,5 @@ typedef void(^SimpleTableTextEditCell_DidEndEditing)(MCSimpleTableTextEditCell* 
 
 @property (nonatomic, readonly) UITextField* textField;
 @property (nonatomic, assign) int textFieldHeight;
-
+@property (nonatomic, assign) MCSimpleTableTextEditCell* simpleCell;
 @end

@@ -9,15 +9,16 @@
 #import "MCSimpleTableTextEditCell.h"
 
 static CGRect DEFAULT_RECT = { { 0, 0 }, { 300.0f, 24.0f } };
-static CGFloat DEFAULT_CELL_HEIGHT = 55.0f;
+static CGFloat DEFAULT_CELL_HEIGHT = 65.0f;
 static CGFloat DEFAULT_TEXTFIELD_HEIGHT = 28.0f;
 static CGFloat VERTICAL_SPACING = 4.0f;
 static int TEXTFIELD_TAG = 999;
 
-
+@interface MCSimpleTableTextEditCell()
+@property (nonatomic, retain) UITextField* textField;
+@end
 
 @implementation MCSimpleTableTextEditCell
-
 
 - (id)init
 {
@@ -31,21 +32,17 @@ static int TEXTFIELD_TAG = 999;
 }
 
 
-- (UITextField*) textField
-{
-    SimpleTableTextEditCell_Cell* cell = (SimpleTableTextEditCell_Cell*) [self tableCell];
-    return cell.textField;
-}
-
 - (void) configureCell:(UITableViewCell *)cell
 {
     // additional config
     SimpleTableTextEditCell_Cell* text_cell = (SimpleTableTextEditCell_Cell*)cell;
+    text_cell.simpleCell = self;
     text_cell.textFieldHeight = self.textFieldHeight;
-    text_cell.textField.delegate = self;
     text_cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    text_cell.textField.borderStyle = UITextBorderStyleLine;
-    text_cell.textField.returnKeyType = UIReturnKeyDone;
+    self.textField = text_cell.textField;
+    self.textField.delegate = self;
+    self.textField.borderStyle = UITextBorderStyleLine;
+    self.textField.returnKeyType = UIReturnKeyDone;
     
     // allow block to overide above
     [super configureCell:cell];
@@ -136,6 +133,14 @@ static int TEXTFIELD_TAG = 999;
     
     self.textLabel.frame = labelRect;
     self.textField.frame = fieldRect;
+}
+
+- (void)prepareForReuse;
+{
+    [super prepareForReuse];
+    
+    self.simpleCell.textField = nil;
+    self.simpleCell = nil;
 }
 
 @end
