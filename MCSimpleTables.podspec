@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MCSimpleTables"
-  s.version      = "0.2.0"
+  s.version      = "0.3.0"
   s.summary      = <<-DESC
     A simple UITableViewController subclass and helper classes for programmatically creating coded UITableViews.
     DESC
