@@ -35,6 +35,8 @@
             NSLog(@"Failed to perform fetch: %@", error.localizedDescription);
             return nil;
         }
+        
+        _showingNoObjectsCell = NO;
     }
     return self;
 }
@@ -46,11 +48,18 @@
 
 - (NSUInteger)cellCount
 {
-    NSUInteger min = (self.noObjectCell != nil) ? 1 : 0;
-    
     id<NSFetchedResultsSectionInfo> info = [_controller.sections objectAtIndex:0];
     NSUInteger numberOfObjects = [info numberOfObjects];
-    return MAX(min, numberOfObjects);
+    
+    if (numberOfObjects == 0 && self.noObjectCell)
+    {
+        _showingNoObjectsCell = YES;
+        return 1;
+    }
+    else
+    {
+        return numberOfObjects;
+    }
 }
 
 - (MCSimpleTableCell*) cellAtIndex:(NSUInteger)index
@@ -118,10 +127,11 @@
     switch(type) {
             
         case NSFetchedResultsChangeInsert:
-            if (self.noObjectCell != nil && numObjects == 1 && newIndexPath.row == 0) {
+            if (_showingNoObjectsCell && newIndexPath.row == 0) {
                 // swap no objects cell for first cell;
                 [tableView reloadRowsAtIndexPaths:@[newIndexPath]
                                  withRowAnimation:self.rowAnimation];
+                _showingNoObjectsCell = NO;
             } else {
                 [tableView insertRowsAtIndexPaths:@[newIndexPath]
                                  withRowAnimation:self.rowAnimation];
@@ -133,6 +143,7 @@
                 // swap out last cell for no objects cell
                 [tableView reloadRowsAtIndexPaths:@[indexPath]
                                  withRowAnimation:self.rowAnimation];
+                _showingNoObjectsCell = YES;
             } else {
                 [tableView deleteRowsAtIndexPaths:@[indexPath]
                                  withRowAnimation:self.rowAnimation];

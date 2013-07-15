@@ -28,6 +28,8 @@ typedef void(^MCSimpleTableCoreDataCellSelectedBlock)(MCSimpleTableCoreDataCell*
     // blocks for configuration and responding to actions
     MCSimpleTableCoreDataCellConfigureBlock _configureBlock;
     MCSimpleTableCoreDataCellSelectedBlock _selectedBlock;
+    
+    BOOL _showingNoObjectsCell;
 }
 
 @property (nonatomic,readonly) NSFetchRequest* fetchRequest;
